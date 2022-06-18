@@ -1,0 +1,12 @@
+.navbar {
+    justify-content: space-between;
+    width: 98%;
+    margin: 0 auto;
+}
+
+a {
+    padding: 2rem;
+    font-size: 28px;
+    text-decoration: none;
+    color: white;
+}
