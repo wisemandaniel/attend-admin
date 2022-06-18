@@ -22,6 +22,8 @@ import { StudentsComponent } from './pages/students/students.component';
 import { LevelsComponent } from './pages/levels/levels.component';
 import { AttendanceComponent } from './pages/attendance/attendance.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CreateSessionComponent } from './components/create-session/create-session.component';
 
 @NgModule({
   declarations: [
@@ -35,10 +37,12 @@ import { HttpClientModule } from '@angular/common/http';
     CoursesComponent,
     StudentsComponent,
     LevelsComponent,
-    AttendanceComponent
+    AttendanceComponent,
+    CreateSessionComponent
   ],
   imports: [
     HttpClientModule,
+    ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

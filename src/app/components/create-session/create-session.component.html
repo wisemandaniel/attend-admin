@@ -1,0 +1,38 @@
+        <div class="modal-body">
+          <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+             <div class="mb-3">
+               <label class="form-label">Course title</label>
+               <select formControlName="course" class="form-select">
+                <option>CEF 201, Programming 1</option>
+                <option>CEF 201, Programming 2</option>
+                <option>CEF 201, Programming 3</option>
+              </select>
+             </div>
+             <div class="mb-3">
+               <label class="form-label">Date</label>
+               <input 
+                    type="date" 
+                    class="form-control"
+                    formControlName="date">
+             </div>
+             <div class="mb-3">
+               <label class="form-label">Start time</label>
+               <input type="time" class="form-control" formControlName="start">
+             </div>
+             <div class="mb-3">
+               <label class="form-label">End time</label>
+               <input type="time" class="form-control" formControlName="end">
+             </div>
+             <div class="mb-3">
+               <label class="form-label">Location</label>
+               <input 
+                    type="text" 
+                    class="form-control" 
+                    placeholder="Enter the Location"
+                    formControlName="location">
+             </div>
+             <div style="justify-content: center;" class="modal-footer">
+               <button mat-raised-button color="primary" type="submit">Create session</button>
+             </div>
+           </form>
+        </div>

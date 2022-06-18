@@ -8,3 +8,11 @@
     float: right;
     margin-top: 50px;
 }
+
+.modal {
+    width: 70%;
+    position: fixed;
+    top: 50% !important;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

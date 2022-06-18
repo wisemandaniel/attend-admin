@@ -1,17 +1,15 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { SessionService } from '../../services/session/session.service';
-import { ModalDirective } from 'ngx-bootstrap/modal';
-import { MatDialog } from '@angular/material/dialog';
-import { CreateSessionComponent } from '../../components/create-session/create-session.component';
+import { SessionService } from 'src/app/services/session/session.service';
 
 @Component({
-  selector: 'app-sessions',
-  templateUrl: './sessions.component.html',
-  styleUrls: ['./sessions.component.css']
+  selector: 'app-create-session',
+  templateUrl: './create-session.component.html',
+  styleUrls: ['./create-session.component.css']
 })
-export class SessionsComponent implements OnInit {
+export class CreateSessionComponent implements OnInit {
 
   today = new Date();
   time = this.today.getHours() + ":" + this.today.getMinutes()
@@ -22,10 +20,8 @@ export class SessionsComponent implements OnInit {
   constructor(
     private router: Router,
     private sessionService: SessionService,
-    public dialog: MatDialog) { }
-
-    @ViewChild('childModal')
-  public childModal!: ModalDirective;
+    public dialogRef: MatDialogRef<CreateSessionComponent>
+  ) { }
 
   ngOnInit(): void {
     this.myForm = new FormGroup({
@@ -36,23 +32,6 @@ export class SessionsComponent implements OnInit {
       location: new FormControl(''),
       status: new FormControl(this.sessionStatus)
     });
-
-  }
-
-  openDialog(): void {
-    const dialogRef = this.dialog.open(CreateSessionComponent, {
-      width: '500px',
-      data: {},
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });
-  }
-
-
-  viewAttendance() {
-     this.router.navigate(['/attend']);
   }
 
   onSubmit(form: FormGroup) {
@@ -70,14 +49,14 @@ export class SessionsComponent implements OnInit {
       {
         next: (response) => {
           console.log(response);
-          this.childModal.hide();
+          this.dialogRef.close();
         },
         error: (error) => {
           console.log(error);
-          this.childModal.hide();
         }
       }
      )
   }
+
 
 }

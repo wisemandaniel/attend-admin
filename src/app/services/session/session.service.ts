@@ -1,16 +1,16 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AttendanceService {
-  url = environment.baseUrl1;
+export class SessionService {
+  url = environment.baseUrl2;
 
   constructor(private http: HttpClient) { }
 
-  getAttendance() {
-    return this.http.get(this.url);
+  createSession(data: any) {
+    return this.http.post(this.url + 'session', data);
   }
 }

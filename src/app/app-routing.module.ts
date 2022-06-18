@@ -6,11 +6,21 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { LevelsComponent } from './pages/levels/levels.component';
 import { SessionsComponent } from './pages/sessions/sessions.component';
 import { StudentsComponent } from './pages/students/students.component';
+import { SignupComponent } from './pages/auth/signup/signup.component';
+import { LoginComponent } from './pages/auth/login/login.component';
 
 const routes: Routes = [
   {
     path: '',
     component: DashboardComponent
+  },
+  {
+    path: 'signup',
+    component: SignupComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   },
   {
     path: 'db',

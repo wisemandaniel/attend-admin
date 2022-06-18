@@ -1,0 +1,85 @@
+{
+  "session": [
+    {
+      "course": "CEF 201, Programming 2",
+      "date": "2022-06-18",
+      "start": "13:00",
+      "end": "15:00",
+      "location": "U BLOCK A",
+      "status": "",
+      "id": 1
+    },
+    {
+      "course": "CEF 201, Programming 1",
+      "date": "2022-06-18",
+      "start": "12:54",
+      "end": "12:55",
+      "location": "TEST",
+      "status": "Started",
+      "id": 2
+    },
+    {
+      "course": "",
+      "date": "",
+      "start": "",
+      "end": "",
+      "location": "",
+      "status": "Started",
+      "id": 3
+    },
+    {
+      "course": "",
+      "date": "",
+      "start": "",
+      "end": "",
+      "location": "",
+      "status": "Started",
+      "id": 4
+    },
+    {
+      "course": "",
+      "date": "",
+      "start": "",
+      "end": "",
+      "location": "",
+      "status": "Started",
+      "id": 5
+    },
+    {
+      "course": "",
+      "date": "",
+      "start": "",
+      "end": "",
+      "location": "",
+      "status": "Started",
+      "id": 6
+    },
+    {
+      "course": "",
+      "date": "",
+      "start": "",
+      "end": "",
+      "location": "",
+      "status": "Started",
+      "id": 7
+    },
+    {
+      "course": "",
+      "date": "",
+      "start": "",
+      "end": "",
+      "location": "",
+      "status": "Started",
+      "id": 8
+    }
+  ],
+  "attendance": [],
+  "user": [
+    {
+      "name": "NDZO DANIEL UGHE",
+      "email": "ndzodaniel31@gmail.com",
+      "password": "678313613",
+      "id": 1
+    }
+  ]
+}
