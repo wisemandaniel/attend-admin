@@ -1,11 +1,15 @@
+<ngx-spinner *ngIf="loading"
+bdColor="rgba(0, 0, 0, 1)"
+template="<img src='https://media.giphy.com/media/o8igknyuKs6aY/giphy.gif' />"
+>
+</ngx-spinner>
+        
         <div class="modal-body">
           <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
              <div class="mb-3">
                <label class="form-label">Course title</label>
-               <select formControlName="course" class="form-select">
-                <option>CEF 201, Programming 1</option>
-                <option>CEF 201, Programming 2</option>
-                <option>CEF 201, Programming 3</option>
+               <select formControlName="name" class="form-select">
+                <option *ngFor = "let course of courses" [value] = "course.id">{{ course.title }}</option>
               </select>
              </div>
              <div class="mb-3">
@@ -13,15 +17,15 @@
                <input 
                     type="date" 
                     class="form-control"
-                    formControlName="date">
+                    formControlName="day">
              </div>
              <div class="mb-3">
                <label class="form-label">Start time</label>
-               <input type="time" class="form-control" formControlName="start">
+               <input type="time" class="form-control" formControlName="startTime">
              </div>
              <div class="mb-3">
                <label class="form-label">End time</label>
-               <input type="time" class="form-control" formControlName="end">
+               <input type="time" class="form-control" formControlName="endTime">
              </div>
              <div class="mb-3">
                <label class="form-label">Location</label>
@@ -29,7 +33,7 @@
                     type="text" 
                     class="form-control" 
                     placeholder="Enter the Location"
-                    formControlName="location">
+                    formControlName="comment">
              </div>
              <div style="justify-content: center;" class="modal-footer">
                <button mat-raised-button color="primary" type="submit">Create session</button>

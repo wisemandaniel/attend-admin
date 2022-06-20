@@ -43,7 +43,7 @@ const routes: Routes = [
     component: LevelsComponent
   },
   {
-    path: 'attend',
+    path: 'attend/:id',
     component: AttendanceComponent
   }
 ];

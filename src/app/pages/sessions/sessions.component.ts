@@ -5,6 +5,8 @@ import { SessionService } from '../../services/session/session.service';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateSessionComponent } from '../../components/create-session/create-session.component';
+import { ToastrService } from 'ngx-toastr';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-sessions',
@@ -12,6 +14,11 @@ import { CreateSessionComponent } from '../../components/create-session/create-s
   styleUrls: ['./sessions.component.css']
 })
 export class SessionsComponent implements OnInit {
+  loading = false;
+  noSession = '';
+  courseId = '6db9063d-55ca-4051-bf4b-97ab99fc337e';
+
+  sessions: any[] = [];
 
   today = new Date();
   time = this.today.getHours() + ":" + this.today.getMinutes()
@@ -21,22 +28,48 @@ export class SessionsComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private sessionService: SessionService,
-    public dialog: MatDialog) { }
-
-    @ViewChild('childModal')
-  public childModal!: ModalDirective;
+    public dialog: MatDialog,
+    private toastr: ToastrService,
+    private spinner: NgxSpinnerService,
+    private session: SessionService) { }
 
   ngOnInit(): void {
+    this.getSessions();
+    this.spinner.show();
     this.myForm = new FormGroup({
-      course: new FormControl(''),
-      date: new FormControl(''),
-      start: new FormControl(''),
-      end: new FormControl(''),
-      location: new FormControl(''),
+      name: new FormControl(''),
+      day: new FormControl(''),
+      startTime: new FormControl(''),
+      endTime: new FormControl(''),
+      comment: new FormControl(''),
       status: new FormControl(this.sessionStatus)
     });
+  }
 
+  getSessions() {
+    this.session.getSessions().subscribe(
+      {
+        next: (response: any) => {
+           this.sessions = response;
+           console.log(response);
+           if(this.sessions.length == 0){
+              this.showSuccess('No session created!! Create a session to records students\' attendaance')
+           }
+        },
+        error: (error) => {
+           console.log(error);
+           
+        }
+      }
+    );
+  }
+
+  showSuccess(message: string, ) {
+    this.toastr.success(message);
+  }
+
+  showError(message: string, ) {
+    this.toastr.error(message);
   }
 
   openDialog(): void {
@@ -46,38 +79,27 @@ export class SessionsComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      this.getSessions();
     });
   }
 
 
-  viewAttendance() {
-     this.router.navigate(['/attend']);
+  viewAttendance(sessionId: string) {
+     this.router.navigate(['/attend/' + sessionId]);
   }
 
-  onSubmit(form: FormGroup) {
-    
-    if (this.myForm.value.start == this.time || this.myForm.value.start > this.time)
-    {
-      if(this.myForm.value.start <= this.myForm.value.end) {
-        alert("Session has started");
-      }
-    }
-    if(this.myForm.value.start < this.time) {
-      alert("Session not started");
-    }
-     this.sessionService.createSession(form.value).subscribe(
+  deleteSession(id: string) {
+    this.session.deleteSession(id).subscribe(
       {
         next: (response) => {
-          console.log(response);
-          this.childModal.hide();
+          this.showSuccess('Session is deleted');
+          this.getSessions();
         },
         error: (error) => {
-          console.log(error);
-          this.childModal.hide();
+          this.showError(error.message)
         }
       }
-     )
+    )
   }
 
 }

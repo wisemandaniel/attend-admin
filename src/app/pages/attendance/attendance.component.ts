@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AttendanceService } from 'src/app/services/attendance/attendance.service';
 
 export interface PeriodicElement {
@@ -31,29 +33,44 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class AttendanceComponent implements OnInit {
 
   data: any;
+  sessionId: any;
 
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private attendanceService: AttendanceService) { }
-
-  ngAfterViewInit() {
-    this.data.paginator = this.paginator;
-  }
+  constructor(
+    private toastr: ToastrService,
+    private attendanceService: AttendanceService,
+    private route: ActivatedRoute) {}
 
   ngOnInit(): void {
+    this.sessionId = this.route.snapshot.paramMap.get('id');
+    console.log(this.sessionId);
     this.getAttendanceData();
   }
 
+  showSuccess(message: string, ) {
+    this.toastr.success(message);
+  }
+
+  showError(message: string, ) {
+    this.toastr.error(message);
+  }
+
   getAttendanceData() {
-    this.attendanceService.getAttendance().subscribe(
+    this.attendanceService.getAttendance(this.sessionId).subscribe(
       {
         next: (response: any) => {
+          console.log(response);
+          
           this.data = new MatTableDataSource<any>(response)
           console.log(this.data);
           this.data.paginator = this.paginator;
+          if(this.data.length == null) {
+            this.showSuccess('No student yet');
+          }
         },
         error: (error) => {
 

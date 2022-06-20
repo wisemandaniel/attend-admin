@@ -22,13 +22,13 @@
                         <div class="col-md-6 mb-4">
                           <div class="form-outline">
                             <label style="margin-top: 25px;" class="form-label">Email address</label>
-                            <input formControlName = "email" type="text" class="form-control form-control-lg" />
+                            <input formControlName = "email" type="email" class="form-control form-control-lg" />
                           </div>
                         </div>
                         <div class="col-md-6 mb-4">
                             <div class="form-outline">
                               <label style="margin-top: 25px;" class="form-label">Password</label>
-                              <input formControlName = "password" type="text" id="form3Example1n" class="form-control form-control-lg" />
+                              <input formControlName = "password" type="password" id="form3Example1n" class="form-control form-control-lg" />
                             </div>
                           </div>
                       </div>
@@ -36,7 +36,15 @@
                       </div>
 
                       <div class="row" style="width: 100%">
-                        <button class="btn btn-primary">Register</button>
+                        <button class="btn btn-primary">Login</button>
+                      </div>
+
+                      <div class="row" style="margin-top: 20px">
+                        <div class="col-md-8 mb-4">
+                            <div class="form-outline">
+                              <h3>Don't yet have an account? <span style="cursor: pointer; color: blue;" routerLink="/signup">Sign up</span></h3>
+                            </div>
+                          </div>
                       </div>
                   </form>
                 </div>

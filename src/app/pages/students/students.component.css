@@ -1,0 +1,33 @@
+.row {
+    margin-left: 250px;
+    margin-top: 30px;
+}
+table {
+    width: 100%;
+}
+
+.mat-elevation-z8 {
+    width: 90%;
+}
+
+.mat-cell {
+    font-size: 24px;
+}
+
+.mat-paginator {
+    font-size: 24px;
+}
+
+.mat-header-cell {
+    font-size: 24px;
+}
+
+::ng-deep .mat-select-value {
+    font-size: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+::ng-deep .mat-option-text {
+    font-size: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

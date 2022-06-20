@@ -6,11 +6,19 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class SessionService {
-  url = environment.baseUrl2;
+  url = environment.baseUrl;
 
   constructor(private http: HttpClient) { }
 
-  createSession(data: any) {
-    return this.http.post(this.url + 'session', data);
+  createSession(data: any, courseId: string) {
+    return this.http.post(this.url + 'public/course/sessions', data, {params:{courseId}});
+  }
+
+  getSessions() {
+    return this.http.get(this.url + 'public/course/sessions');
+  }
+
+  deleteSession(sessionId: string) {
+    return this.http.delete(this.url + 'public/course/sessions', {params:{sessionId}})
   }
 }

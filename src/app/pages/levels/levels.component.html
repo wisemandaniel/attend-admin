@@ -1,1 +1,66 @@
-<p>levels works!</p>
+<ngx-spinner *ngIf="loading"
+  bdColor="rgba(0, 0, 0, 1)"
+  template="<img src='https://media.giphy.com/media/o8igknyuKs6aY/giphy.gif' />"
+>
+</ngx-spinner>
+
+<div class="container-fluid">
+    <app-nav></app-nav>
+    <div class="row">
+        <div class="col">
+           <div class="card">
+               <div class="card-body">
+                  <h2 class="card-title">CEF-301</h2>
+                  <h2 class="card-title">Statistics and probability</h2>
+                  <h3 class="card-text">9:00 AM - 11:00 AM</h3>
+                  <div>
+                    <button mat-raised-button color="primary" (click) = "viewStudents()">View students</button>
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    <button mat-raised-button color="warn">Delete</button>
+                  </div>
+               </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                   <h2 class="card-title">CEF-301</h2>
+                   <h2 class="card-title">Statistics and probability</h2>
+                   <h3 class="card-text">9:00 AM - 11:00 AM</h3>
+                   <div>
+                     <button mat-raised-button color="primary">View students</button>
+                     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                     <button mat-raised-button color="warn">Delete</button>
+                   </div>
+                </div>
+             </div>
+         </div>
+
+         <div class="col">
+            <div class="card">
+                <div class="card-body">
+                   <h2 class="card-title">CEF-301</h2>
+                   <h2 class="card-title">Statistics and probability</h2>
+                   <h3 class="card-text">9:00 AM - 11:00 AM</h3>
+                   <div>
+                     <button mat-raised-button color="primary">View students</button>
+                     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                     <button mat-raised-button color="warn">Delete</button>
+                   </div>
+                </div>
+             </div>
+         </div>
+      </div>
+
+      <section class="fab">
+              <button mat-fab 
+                    (click)="openDialog()"
+                    color="primary"
+                    matTooltip="Create new session">
+                <mat-icon>add</mat-icon>
+              </button>
+      </section>
+
+     
+</div>
