@@ -24,10 +24,10 @@ export class SignupComponent implements OnInit {
 
   ngOnInit(): void {
     this.myForm = new FormGroup({
-      name: new FormControl(''),
+      username: new FormControl(''),
       email: new FormControl(''),
       password: new FormControl(''),
-      role: new FormControl('ROLE_ADMIN')
+      role: new FormControl('ROLE_LECTURER')
     });
   }
 
@@ -36,14 +36,14 @@ export class SignupComponent implements OnInit {
     this.spinner.show();
      this.authService.register(form.value).subscribe(
       {
-        next: (response) => {
+        next: (response: any) => {
           this.loading = false;
-          this.router.navigate(['/db']);
           console.log(response);
+          this.toastr.success(response.message);
         },
         error: (error) => {
           this.loading = false;
-           this.toastr.error(error.message);
+          this.toastr.error(error.error.message);
         }
       }
      )

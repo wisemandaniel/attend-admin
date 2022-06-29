@@ -7,27 +7,33 @@
 
           
               <!-- Position Column -->
-              <ng-container matColumnDef="position">
+              <ng-container matColumnDef="name">
                 <th mat-header-cell *matHeaderCellDef> Name of student </th>
                 <td mat-cell *matCellDef="let element"> {{element.user.username}} </td>
               </ng-container>
           
               <!-- Name Column -->
-              <ng-container matColumnDef="name">
+              <ng-container matColumnDef="matricule">
                 <th mat-header-cell *matHeaderCellDef> Matricule </th>
                 <td mat-cell *matCellDef="let element"> {{element.user.matricule}} </td>
               </ng-container>
           
               <!-- Weight Column -->
-              <ng-container matColumnDef="weight">
+              <ng-container matColumnDef="remark">
                 <th mat-header-cell *matHeaderCellDef> Remark </th>
-                <td mat-cell *matCellDef="let element"> {{element.remark}} </td>
+                <td mat-cell [ngStyle]="{'color': color}" *matCellDef="let element"> {{element.remark}} </td>
+              </ng-container>
+
+              <!-- Symbol Column -->
+              <ng-container matColumnDef="date">
+                <th mat-header-cell *matHeaderCellDef> Date </th>
+                <td mat-cell *matCellDef="let element"> {{element.createdAt | date: 'fullDate'}} </td>
               </ng-container>
           
               <!-- Symbol Column -->
-              <ng-container matColumnDef="symbol">
+              <ng-container matColumnDef="time">
                 <th mat-header-cell *matHeaderCellDef> Time </th>
-                <td mat-cell *matCellDef="let element"> {{element.createdAt | date}} </td>
+                <td mat-cell *matCellDef="let element"> {{element.createdAt | date: 'longTime'}} </td>
               </ng-container>
           
               <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

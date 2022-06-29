@@ -7,6 +7,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { CreateSessionComponent } from '../../components/create-session/create-session.component';
 import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerService } from 'ngx-spinner';
+// import jsPDF from 'jspdf';
+// import 'jspdf-autotable';
 
 @Component({
   selector: 'app-sessions',

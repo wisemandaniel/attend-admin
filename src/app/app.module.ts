@@ -29,6 +29,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { CreateLevelComponent } from './components/create-level/create-level.component';
 import { AuthInterceptor } from './interceptors/auth/auth.interceptor';
 import { CreateCourseComponent } from './components/create-course/create-course/create-course.component';
+import { EditStudentComponent } from './components/edit-student/edit-student.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { CreateCourseComponent } from './components/create-course/create-course/
     AttendanceComponent,
     CreateSessionComponent,
     CreateLevelComponent,
-    CreateCourseComponent
+    CreateCourseComponent,
+    EditStudentComponent
   ],
   imports: [
     HttpClientModule,

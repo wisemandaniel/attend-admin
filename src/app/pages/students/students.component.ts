@@ -3,6 +3,13 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { AttendanceService } from 'src/app/services/attendance/attendance.service';
 import { PeriodicElement } from '../attendance/attendance.component';
+import { StudentService } from '../../services/auth/student/student.service';
+import { MatDialog } from '@angular/material/dialog';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
+import { CreateSessionComponent } from 'src/app/components/create-session/create-session.component';
+import { SessionService } from 'src/app/services/session/session.service';
+import { EditStudentComponent } from 'src/app/components/edit-student/edit-student.component';
 
 @Component({
   selector: 'app-students',
@@ -13,32 +20,51 @@ export class StudentsComponent implements OnInit {
 
   data: any;
 
-  displayedColumns: string[] = ['name', 'matricule', 'level', 'mac'];
+  displayedColumns: string[] = ['name', 'matricule', 'level', 'mac', 'action'];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private attendanceService: AttendanceService) { }
+  constructor(
+    private studentService: StudentService,
+    public dialog: MatDialog,
+    private toastr: ToastrService,
+    private spinner: NgxSpinnerService,
+    private session: SessionService) { }
 
   ngAfterViewInit() {
     this.data.paginator = this.paginator;
   }
 
-  ngOnInit(): void {
-    this.getAttendanceData();
+  openDialog(id: string): void {
+    console.log(id);
+    
+    const dialogRef = this.dialog.open(EditStudentComponent, {
+      width: '500px',
+      data: {id: id},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.getStudents();
+    });
   }
 
-  getAttendanceData() {
-    // this.attendanceService.getAttendance().subscribe(
-    //   {
-    //     next: (response: any) => {
-    //       this.data = new MatTableDataSource<any>(response)
-    //       console.log(this.data);
-    //       this.data.paginator = this.paginator;
-    //     },
-    //     error: (error) => {
+  ngOnInit(): void {
+    this.getStudents();
+  }
 
-    //     }
-    //   }
-    // )
+  getStudents() {
+    this.studentService.getAllStudent().subscribe(
+      {
+        next: (response: any) => {
+          this.data = new MatTableDataSource<any>(response)
+          console.log(response);
+          this.data.paginator = this.paginator;
+        },
+        error: (error) => {
+          console.log(error);
+          
+        }
+      }
+    )
   }
 }

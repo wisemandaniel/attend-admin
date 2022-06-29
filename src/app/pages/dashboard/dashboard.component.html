@@ -1,1 +1,40 @@
-<app-nav></app-nav>
+
+<div class="container-fluid">
+    <app-nav></app-nav>
+    <div class="row">
+
+        <div class="col-3">
+            <div class="card">
+                <div class="card-body">
+                     <button (click) = "openDialog()" style="text-align: center; width: 100%" mat-raised-button color="primary">Create a session</button>
+                </div>
+             </div>
+         </div>
+
+         <div class="col-3">
+            <div class="card">
+                <div class="card-body">
+                     <button routerLink="/session" style="text-align: center; width: 100%" mat-raised-button color="primary">View all sessions</button>
+                </div>
+             </div>
+         </div>
+
+         <div class="col-3">
+            <div class="card">
+                <div class="card-body">
+                     <button (click) = "openDialog()" style="text-align: center; width: 100%" mat-raised-button color="primary">Create a course</button>
+                </div>
+             </div>
+         </div>
+
+         <div class="col-3">
+            <div class="card">
+                <div class="card-body">
+                     <button routerLink="/session" style="text-align: center; width: 100%" mat-raised-button color="primary">View all courses</button>
+                </div>
+             </div>
+         </div>
+         
+
+    </div>    
+</div>

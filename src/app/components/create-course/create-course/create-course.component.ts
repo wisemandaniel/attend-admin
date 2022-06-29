@@ -39,12 +39,12 @@ export class CreateCourseComponent implements OnInit {
       {
         next: (response) => {
           this.loading = false;
-          this.toastr.success('Session created successfully');
+          this.toastr.success('Course created successfully');
           this.dialogRef.close();
         },
         error: (error) => {
           this.loading = false;
-          this.toastr.error(error.message);
+          this.toastr.error(error.error.message);
           this.dialogRef.close();
         }
       }

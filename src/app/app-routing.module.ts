@@ -8,11 +8,12 @@ import { SessionsComponent } from './pages/sessions/sessions.component';
 import { StudentsComponent } from './pages/students/students.component';
 import { SignupComponent } from './pages/auth/signup/signup.component';
 import { LoginComponent } from './pages/auth/login/login.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
     path: '',
-    component: DashboardComponent
+    component: LoginComponent
   },
   {
     path: 'signup',
@@ -24,27 +25,27 @@ const routes: Routes = [
   },
   {
     path: 'db',
-    component: DashboardComponent
+    component: DashboardComponent, canActivate: [AuthGuard]
   },
   {
     path: 'session',
-    component: SessionsComponent
+    component: SessionsComponent, canActivate: [AuthGuard]
   },
   {
     path: 'courses',
-    component: CoursesComponent
+    component: CoursesComponent, canActivate: [AuthGuard]
   },
   {
     path: 'student',
-    component: StudentsComponent
+    component: StudentsComponent, canActivate: [AuthGuard]
   },
   {
     path: 'level',
-    component: LevelsComponent
+    component: LevelsComponent, canActivate: [AuthGuard]
   },
   {
     path: 'attend/:id',
-    component: AttendanceComponent
+    component: AttendanceComponent, canActivate: [AuthGuard]
   }
 ];
 

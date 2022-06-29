@@ -34,8 +34,9 @@ export class AttendanceComponent implements OnInit {
 
   data: any;
   sessionId: any;
+  color = 'green';
 
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns: string[] = ['name', 'matricule', 'date', 'time', 'remark'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -64,11 +65,25 @@ export class AttendanceComponent implements OnInit {
       {
         next: (response: any) => {
           console.log(response);
-          
+
+          response.forEach((item: any) =>{
+            var x = item.remark
+            var y = item.session;
+            console.log(x);
+            
+            if(x == 'Late') {
+              this.color = 'red';
+            } else {
+              this.color = 'green';
+            }
+
+            console.log(this.color);
+            
+          });
+
           this.data = new MatTableDataSource<any>(response)
-          console.log(this.data);
           this.data.paginator = this.paginator;
-          if(this.data.length == null) {
+          if(response.length == 0) {
             this.showSuccess('No student yet');
           }
         },
