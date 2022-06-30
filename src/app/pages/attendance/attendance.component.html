@@ -21,7 +21,10 @@
               <!-- Weight Column -->
               <ng-container matColumnDef="remark">
                 <th mat-header-cell *matHeaderCellDef> Remark </th>
-                <td mat-cell [ngStyle]="{'color': color}" *matCellDef="let element"> {{element.remark}} </td>
+                <td mat-cell *matCellDef="let element"  [ngClass]="{
+                  'is-green': element.remark === 'Early',
+                  'is-red': element.remark === 'Late'
+                }"> {{element.remark}} </td>
               </ng-container>
 
               <!-- Symbol Column -->

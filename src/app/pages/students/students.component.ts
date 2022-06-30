@@ -7,7 +7,8 @@ import { StudentService } from '../../services/auth/student/student.service';
 import { MatDialog } from '@angular/material/dialog';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
-import { CreateSessionComponent } from 'src/app/components/create-session/create-session.component';
+// import {} from '@types/googlemaps';
+// import { AgmCoreModule, MapsAPILoader } from "@agm/core";
 import { SessionService } from 'src/app/services/session/session.service';
 import { EditStudentComponent } from 'src/app/components/edit-student/edit-student.component';
 
@@ -19,6 +20,7 @@ import { EditStudentComponent } from 'src/app/components/edit-student/edit-stude
 export class StudentsComponent implements OnInit {
 
   data: any;
+  role: any;
 
   displayedColumns: string[] = ['name', 'matricule', 'level', 'mac', 'action'];
 
@@ -49,6 +51,11 @@ export class StudentsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const user: any = localStorage.getItem('user');
+    const userObj = JSON.parse(user);
+    this.role = userObj.role[0]
+    console.log(userObj);
+    console.log(this.role);
     this.getStudents();
   }
 
@@ -62,7 +69,6 @@ export class StudentsComponent implements OnInit {
         },
         error: (error) => {
           console.log(error);
-          
         }
       }
     )

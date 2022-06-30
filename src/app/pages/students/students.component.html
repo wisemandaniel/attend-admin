@@ -32,7 +32,7 @@
               <!-- Symbol Column -->
               <ng-container matColumnDef="action">
                 <th mat-header-cell *matHeaderCellDef> Actions </th>
-                <mat-cell *matCellDef="let row" >
+                <mat-cell *matCellDef="let row">
                   <mat-icon color = "primary" (click) = "openDialog(row.id)">edit</mat-icon>
                   <mat-icon color = "accent" style = "margin-left: 20px" (click) = "openDialog(row.id)">delete_forever</mat-icon>
              </mat-cell>
