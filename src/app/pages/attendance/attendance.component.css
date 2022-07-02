@@ -39,3 +39,9 @@ table {
     font-size: 20px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+.fab {
+    margin-right: 150px;
+    float: right;
+    margin-top: 50px;
+}

@@ -30,6 +30,7 @@ import { CreateLevelComponent } from './components/create-level/create-level.com
 import { AuthInterceptor } from './interceptors/auth/auth.interceptor';
 import { CreateCourseComponent } from './components/create-course/create-course/create-course.component';
 import { EditStudentComponent } from './components/edit-student/edit-student.component';
+import { MatTableExporterModule } from 'mat-table-exporter';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { EditStudentComponent } from './components/edit-student/edit-student.com
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     AngularMaterialModule,
+    MatTableExporterModule,
     LayoutModule,
     MatToolbarModule,
     MatButtonModule,

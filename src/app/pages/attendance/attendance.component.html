@@ -3,7 +3,7 @@
     <app-nav></app-nav>
     <div class="row">
         <div class="mat-elevation-z8">
-            <table mat-table [dataSource]="data">
+            <table matTableExporter #exporter="matTableExporter" mat-table [dataSource]="data">
 
           
               <!-- Position Column -->
@@ -49,4 +49,5 @@
           </div>
                     
     </div>
+    <button color = "primary" class="fab" mat-raised-button (click)="exporter.exportTable('csv')">Download attendance list<mat-icon>download</mat-icon></button>
 </div>
