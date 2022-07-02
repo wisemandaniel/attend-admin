@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
      {
        next: (response: any) => {
         this.loading = false;
+        console.log(response);
         this.local.saveToken(response.accessToken);
         this.local.saveUser(JSON.stringify(response));
         this.router.navigate(['/db']);

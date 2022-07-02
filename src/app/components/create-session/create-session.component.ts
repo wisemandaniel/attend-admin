@@ -39,6 +39,7 @@ export class CreateSessionComponent implements OnInit {
       startTime: new FormControl(''),
       endTime: new FormControl(''),
       comment: new FormControl(''),
+      capacity: new FormControl('')
     });
 
     this.getAllCourses();

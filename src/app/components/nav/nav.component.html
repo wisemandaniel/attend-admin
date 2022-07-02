@@ -3,7 +3,18 @@
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
-    <mat-toolbar routerLink = "/db" style = "cursor: pointer">Menu</mat-toolbar>
+    <mat-toolbar routerLink = "/db" style = "cursor: pointer">
+      <div style="margin-top: 80px; margin-left: 50px; margin-bottom: 50px">
+        <span id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          <img style = "width: 50px; height: 50px;" src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" class="rounded-circle z-depth-0"
+          alt="avatar image">
+        </span>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item" href="#">{{ user.username }}</a></li>
+          <li><a class="dropdown-item" href="#">{{ user.email }}</a></li>
+        </ul>
+      </div>
+    </mat-toolbar>
     <mat-nav-list>
       <a mat-list-item routerLink="/session">Sessions</a>
       <a mat-list-item routerLink="/student">Students</a>
@@ -12,7 +23,7 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
+    <mat-toolbar style="display: flex; justify-content: end;" color="primary">
       <button
         type="button"
         aria-label="Toggle sidenav"

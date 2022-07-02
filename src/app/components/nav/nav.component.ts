@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
@@ -10,7 +10,8 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.css']
 })
-export class NavComponent {
+export class NavComponent implements OnInit {
+  user: any;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -23,6 +24,13 @@ export class NavComponent {
     private router: Router,
     private toastr: ToastrService
     ) {}
+
+    ngOnInit(): void { 
+      const user: any = localStorage.getItem('user');
+      this.user = JSON.parse(user);
+      console.log(this.user);
+    }
+
 
   logout() {
     console.log('button clicked');
