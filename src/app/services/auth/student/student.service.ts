@@ -11,7 +11,11 @@ export class StudentService {
   constructor(private http: HttpClient) { }
 
   getAllStudent() {
-    return this.http.get(this.url + 'protected/students/?pageNumber=0&pageSize=5');
+    return this.http.get(this.url + 'protected/students/');
+  }
+
+  editMac(matricule: string, data: any) {
+    return this.http.put(this.url + 'protected/students/' + matricule, data);
   }
 
 }

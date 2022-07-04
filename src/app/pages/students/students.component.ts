@@ -37,12 +37,12 @@ export class StudentsComponent implements OnInit {
     this.data.paginator = this.paginator;
   }
 
-  openDialog(id: string): void {
-    console.log(id);
+  openDialog(matricule: string, mac: string): void {
+    console.log(matricule);
     
     const dialogRef = this.dialog.open(EditStudentComponent, {
-      width: '500px',
-      data: {id: id},
+      width: '400px',
+      data: {matricule: matricule, mac},
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -72,5 +72,10 @@ export class StudentsComponent implements OnInit {
         }
       }
     )
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.data.filter = filterValue.trim().toLowerCase();
   }
 }

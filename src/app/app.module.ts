@@ -12,6 +12,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { LoginComponent } from './pages/auth/login/login.component';
@@ -22,7 +23,7 @@ import { StudentsComponent } from './pages/students/students.component';
 import { LevelsComponent } from './pages/levels/levels.component';
 import { AttendanceComponent } from './pages/attendance/attendance.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateSessionComponent } from './components/create-session/create-session.component';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
@@ -55,6 +56,7 @@ import { MatTableExporterModule } from 'mat-table-exporter';
     NgxSpinnerModule,
     ReactiveFormsModule,
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
@@ -65,7 +67,8 @@ import { MatTableExporterModule } from 'mat-table-exporter';
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    MatInputModule
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA],
   providers: [

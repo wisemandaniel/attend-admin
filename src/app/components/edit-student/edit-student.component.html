@@ -1,1 +1,7 @@
-<p>edit-student works!</p>
+<div>
+    <mat-form-field appearance="fill">
+        <mat-label>Edit Mac Address</mat-label>
+        <input matInput [(ngModel)] = "mac" >
+    </mat-form-field>
+    <button (click) = "editMac()" color="primary" style = "float: right; margin-top: 10px" mat-raised-button>Submit</button>
+</div>

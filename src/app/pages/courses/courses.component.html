@@ -2,6 +2,15 @@
 <div class="container-fluid">
     <app-nav></app-nav>
     <div class="row">
+      <mat-form-field style="width: 25%" appearance="standard" class="full-width">
+        <mat-label>Filter</mat-label>
+        <input
+          matInput
+          (keyup)="applyFilter($event)"
+          placeholder="Search Columns"
+          #input
+        />
+      </mat-form-field>
         <div class="mat-elevation-z8">
             <table matTableExporter #exporter="matTableExporter" mat-table [dataSource]="data">
           

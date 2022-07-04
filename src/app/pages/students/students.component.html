@@ -2,6 +2,15 @@
 <div class="container-fluid">
     <app-nav></app-nav>
     <div class="row">
+<mat-form-field style="width: 25%" appearance="standard" class="full-width">
+  <mat-label>Filter</mat-label>
+  <input
+    matInput
+    (keyup)="applyFilter($event)"
+    placeholder="Search Columns"
+    #input
+  />
+</mat-form-field>
         <div class="mat-elevation-z8">
             <table matTableExporter #exporter="matTableExporter" mat-table [dataSource]="data">
           
@@ -31,10 +40,9 @@
 
               <!-- Symbol Column -->
               <ng-container matColumnDef="action">
-                <th mat-header-cell *matHeaderCellDef> Actions </th>
+                <th mat-header-cell *matHeaderCellDef> Action </th>
                 <mat-cell *matCellDef="let row">
-                  <mat-icon color = "primary" (click) = "openDialog(row.id)">edit</mat-icon>
-                  <mat-icon color = "accent" style = "margin-left: 20px" (click) = "openDialog(row.id)">delete_forever</mat-icon>
+                  <mat-icon style = "cursor: pointer" color = "primary" (click) = "openDialog(row.matricule, row.macAddress)">edit</mat-icon>
              </mat-cell>
               </ng-container>
           
@@ -46,6 +54,6 @@
                            showFirstLastButtons>
             </mat-paginator>
           </div>
-          <button color = "primary" class="fab" mat-raised-button (click)="exporter.exportTable('csv')">Download courses<mat-icon>download</mat-icon></button>
+          <button style="width: 20%" color = "primary" class="fab" mat-raised-button (click)="exporter.exportTable('csv')">Download student list<mat-icon>download</mat-icon></button>
     </div>
 </div>
